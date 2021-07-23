@@ -2,9 +2,10 @@
 
 namespace APP\Exception\Model;
 
+use APP\Exception\Interfaces\IAuthenticated;
 use APP\Exception\Services\VerifyFilds;
 
-class User extends VerifyFilds{
+class User extends VerifyFilds implements IAuthenticated{
     private string $name;
     private string $email;
     private string $password;
@@ -28,5 +29,9 @@ class User extends VerifyFilds{
         return $this->email;
     }
 
-  
+    public function authenticated(string $password): bool
+    {
+        return $this->password === $password;
+    }
+
 }
