@@ -7,7 +7,7 @@ use DomainException;
 class InvalidFildException extends DomainException
 {
     public function __construct(string $field, string $value) {
-        $message = "The field {$field} with {$value} is invalid, please try again.";
+        $message = "O campo {$field} com {$value} é invalido, por favor tente novamente.";
 
         parent::__construct($message);
     }
