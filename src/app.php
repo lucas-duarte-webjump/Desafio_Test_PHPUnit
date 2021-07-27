@@ -3,15 +3,24 @@
 require_once 'vendor/autoload.php';
 
 use APP\Exception\Errors\InvalidFildException;
-use APP\Exception\Model\User;
 use APP\Exception\Services\AuthenticatedUser;
+use APP\Exception\Services\UserService;
 
 try {
-    $user = new User("Lucas", "lucasd@gmail.com", "Lucas123");
+   
 
-    $authenticatedUser = new AuthenticatedUser();
+    $user = new UserService();
 
-    echo $authenticatedUser->login($user, 'Lucas123') . PHP_EOL;
+    $user->execute('Lucas', 'lucas@gmail.com', 'Lucas12345');
+
+
+    foreach($user->getUser() as $i => $data) {
+        var_dump($data);
+    }
+
+    //  $authenticatedUser = new AuthenticatedUser();
+
+    //  echo $authenticatedUser->login( 'Lucas123') . PHP_EOL;
 
 } catch (InvalidFildException | InvalidArgumentException $err) {
     echo "Error" . PHP_EOL;
